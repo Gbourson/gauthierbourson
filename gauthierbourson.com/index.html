@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gauthier Bourson</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/medias/favicon.svg">
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
+
+    <script src="/gsap/gsap.min.js" defer></script>
+    <script src="/gsap/MotionPathPlugin.min.js" defer></script>
+    <script src="/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="/gsap/Draggable.min.js" defer></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+      integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+    ></script>
+
+    <script src="drawreveals.js" defer></script>
+    <script src="animations.js" defer></script>
+    <script src="game.js" defer></script>
+    <script src="hover-effect.umd.js"></script>
+  </head>
+
+  <body>
+    <div class="my-div"></div>
+
+    <div class="preloader">
+      <div class="hellocontainer">
+        <svg class="fhello" id="fhello" viewBox="0 0 2285 1200">
+          <path
+            id="fhello"
+            stroke="#000000"
+            d="m7.00012,277.22128c23.9362,-5.32306 25.56741,-5.71264 27.02303,-6.09116c1.32363,-0.34419 2.53911,-0.68387 3.67516,-1.03091c1.10051,-0.33619 2.18564,-0.69599 3.2874,-1.08412c2.40549,-0.84742 3.74526,-1.35586 5.18362,-1.89422c1.51305,-0.56633 3.07551,-1.16029 4.66398,-1.77791c1.59987,-0.62205 3.18666,-1.24705 4.72859,-1.88436c2.91171,-1.20348 4.22524,-1.79268 5.45746,-2.37054c1.1876,-0.55694 2.33361,-1.13134 3.45759,-1.73354c1.14543,-0.61371 2.31235,-1.27744 3.52221,-1.99971c2.68768,-1.60445 4.16417,-2.54582 5.74277,-3.54396c1.65391,-1.04576 3.35073,-2.13508 5.06682,-3.25417c1.72308,-1.12367 3.42377,-2.24462 5.06682,-3.36063c3.08588,-2.09602 4.46174,-3.08117 5.74086,-4.02345c1.22047,-0.89909 2.37952,-1.7921 3.49421,-2.69523c1.11817,-0.90595 2.23385,-1.85246 3.36496,-2.85493c2.4608,-2.18094 3.77672,-3.42115 5.17214,-4.73004c1.45371,-1.36356 2.93351,-2.7751 4.4184,-4.21942c1.48896,-1.44827 2.95347,-2.89125 4.35375,-4.32587c2.64167,-2.70646 3.85634,-3.97841 4.9098,-5.37038c1.16187,-1.5352 2.27435,-3.467 3.36278,-5.90327c1.34867,-3.01877 2.71728,-6.84922 4.20296,-11.59895c3.98283,-12.73305 6.12839,-21.0114 8.51172,-30.31386c2.5689,-10.02679 5.0675,-20.51175 7.18231,-31.18072c2.08071,-10.49696 4.00216,-20.57016 4.46792,-29.95641c0.76176,-15.35094 -0.61445,-21.18109 -3.45445,-24.75894c-2.19758,-2.76853 -6.16167,-3.93049 -9.75018,-3.00043c-4.36337,1.13088 -8.78363,4.45881 -12.72307,8.97646c-9.81849,11.25956 -12.92513,19.36656 -16.50831,27.87707c-3.84014,9.12081 -7.0883,18.94976 -10.05393,29.21651c-3.03381,10.5027 -5.66637,21.18704 -7.92121,31.87804c-4.36006,20.67266 -5.81786,30.46866 -7.20959,39.76919c-1.31832,8.80994 -2.37686,17.14287 -3.27016,24.98112c-0.83537,7.33 -1.49658,14.15414 -2.10687,20.45653c-1.0665,11.01349 -1.54012,15.71642 -2.03744,19.90273c-0.44034,3.70668 -0.87657,6.9602 -1.30117,9.79089c-0.36649,2.44331 -0.71575,4.52579 -1.04267,6.27765c-0.49376,2.6459 -0.7328,3.58073 -0.82723,4.25373c-0.05096,0.36325 0.05956,0.39639 0.2542,0.04081c0.40718,-0.74381 0.92141,-1.95602 1.67601,-3.63212c2.21461,-4.91898 3.67179,-8.22682 5.51681,-12.00093c2.06328,-4.22057 4.45871,-8.78194 7.37834,-13.52059c3.07873,-4.99687 6.5155,-10.13351 10.80359,-15.01103c8.85226,-10.06909 14.61214,-14.43449 20.54685,-18.47693c5.83982,-3.9778 11.97934,-7.37718 18.25734,-9.90977c5.87559,-2.37024 11.70923,-4.29544 17.15869,-4.21409c9.35086,0.13958 13.17903,3.29562 15.73279,6.54856c2.79738,3.56327 4.39788,8.13069 5.58599,13.04326c1.25536,5.19061 1.85749,10.65801 2.28997,16.18388c0.84085,10.74375 0.87913,15.73718 1.33852,20.35539c0.4215,-2.18206"
+            stroke-width="3"
+            fill="none"/>
+        </svg>
+        <svg class="hello" id="hello" viewBox="0 0 2285 1200">
+          <path
+            stroke="#000000"
+            d="m7.00012,277.22128c23.9362,-5.32306 25.56741,-5.71264 27.02303,-6.09116c1.32363,-0.34419 2.53911,-0.68387 3.67516,-1.03091c1.10051,-0.33619 2.18564,-0.69599 3.2874,-1.08412c2.40549,-0.84742 3.74526,-1.35586 5.18362,-1.89422c1.51305,-0.56633 3.07551,-1.16029 4.66398,-1.77791c1.59987,-0.62205 3.18666,-1.24705 4.72859,-1.88436c2.91171,-1.20348 4.22524,-1.79268 5.45746,-2.37054c1.1876,-0.55694 2.33361,-1.13134 3.45759,-1.73354c1.14543,-0.61371 2.31235,-1.27744 3.52221,-1.99971c2.68768,-1.60445 4.16417,-2.54582 5.74277,-3.54396c1.65391,-1.04576 3.35073,-2.13508 5.06682,-3.25417c1.72308,-1.12367 3.42377,-2.24462 5.06682,-3.36063c3.08588,-2.09602 4.46174,-3.08117 5.74086,-4.02345c1.22047,-0.89909 2.37952,-1.7921 3.49421,-2.69523c1.11817,-0.90595 2.23385,-1.85246 3.36496,-2.85493c2.4608,-2.18094 3.77672,-3.42115 5.17214,-4.73004c1.45371,-1.36356 2.93351,-2.7751 4.4184,-4.21942c1.48896,-1.44827 2.95347,-2.89125 4.35375,-4.32587c2.64167,-2.70646 3.85634,-3.97841 4.9098,-5.37038c1.16187,-1.5352 2.27435,-3.467 3.36278,-5.90327c1.34867,-3.01877 2.71728,-6.84922 4.20296,-11.59895c3.98283,-12.73305 6.12839,-21.0114 8.51172,-30.31386c2.5689,-10.02679 5.0675,-20.51175 7.18231,-31.18072c2.08071,-10.49696 4.00216,-20.57016 4.46792,-29.95641c0.76176,-15.35094 -0.61445,-21.18109 -3.45445,-24.75894c-2.19758,-2.76853 -6.16167,-3.93049 -9.75018,-3.00043c-4.36337,1.13088 -8.78363,4.45881 -12.72307,8.97646c-9.81849,11.25956 -12.92513,19.36656 -16.50831,27.87707c-3.84014,9.12081 -7.0883,18.94976 -10.05393,29.21651c-3.03381,10.5027 -5.66637,21.18704 -7.92121,31.87804c-4.36006,20.67266 -5.81786,30.46866 -7.20959,39.76919c-1.31832,8.80994 -2.37686,17.14287 -3.27016,24.98112c-0.83537,7.33 -1.49658,14.15414 -2.10687,20.45653c-1.0665,11.01349 -1.54012,15.71642 -2.03744,19.90273c-0.44034,3.70668 -0.87657,6.9602 -1.30117,9.79089c-0.36649,2.44331 -0.71575,4.52579 -1.04267,6.27765c-0.49376,2.6459 -0.7328,3.58073 -0.82723,4.25373c-0.05096,0.36325 0.05956,0.39639 0.2542,0.04081c0.40718,-0.74381 0.92141,-1.95602 1.67601,-3.63212c2.21461,-4.91898 3.67179,-8.22682 5.51681,-12.00093c2.06328,-4.22057 4.45871,-8.78194 7.37834,-13.52059c3.07873,-4.99687 6.5155,-10.13351 10.80359,-15.01103c8.85226,-10.06909 14.61214,-14.43449 20.54685,-18.47693c5.83982,-3.9778 11.97934,-7.37718 18.25734,-9.90977c5.87559,-2.37024 11.70923,-4.29544 17.15869,-4.21409c9.35086,0.13958 13.17903,3.29562 15.73279,6.54856c2.79738,3.56327 4.39788,8.13069 5.58599,13.04326c1.25536,5.19061 1.85749,10.65801 2.28997,16.18388c0.84085,10.74375 0.87913,15.73718 1.33852,20.35539c0.4215,4.23728 0.95617,8.0928 2.20596,11.36827c1.10588,2.89834 2.66649,5.58438 5.30809,6.84369c5.59525,2.6674 10.30746,1.56462 14.84428,0.47474c5.11825,-1.22956 10.44606,-3.35132 15.75194,-6.11088c5.57843,-2.9013 11.07571,-6.34458 15.75194,-10.58225c9.40082,-8.51913 12.34619,-13.91508 14.77343,-19.15042c2.34728,-5.06286 3.7737,-10.12679 4.2719,-14.87263c0.44799,-4.26761 0.6266,-8.26862 -1.22148,-10.93356c-2.60806,-3.76088 -6.43999,-3.28433 -9.27001,-1.87215c-3.50963,1.75132 -6.80821,4.78361 -9.94405,8.39448c-3.37337,3.88436 -6.4548,8.25064 -8.39298,13.02552c-3.7581,9.25841 -3.544,14.12281 -2.39363,18.38388c1.10286,4.08511 3.59002,7.86568 7.31585,10.53434c3.85325,2.75992 9.24571,4.67742 15.32972,4.83866c14.77647,0.39161 23.57858,-3.07675 32.75237,-6.73465c10.08047,-4.01944 20.29006,-9.52858 30.12947,-16.38971c10.37464,-7.23434 20.47931,-15.69051 28.70768,-25.81153c17.34386,-21.33327 22.16754,-34.69733 26.49069,-48.07315c4.35989,-13.48939 6.94024,-27.24672 8.11292,-40.709c1.1199,-12.85652 1.31341,-24.9967 -0.8057,-35.75855c-3.3961,-17.24692 -7.68559,-23.36081 -12.67468,-26.17842c-4.195,-2.36913 -10.0916,-1.9515 -14.91396,0.67248c-5.84107,3.17828 -11.13108,8.98383 -15.36632,16.37551c-10.38188,18.11935 -12.38488,30.17554 -14.76578,42.87154c-2.53258,13.50503 -3.93413,27.75309 -4.54545,42.38399c-0.61728,14.77375 -0.52651,29.49348 0.75398,43.82122c2.39037,26.74669 5.26946,38.64268 8.5768,49.38223c3.03604,9.85863 6.82941,18.71683 11.58348,26.31899c4.36904,6.98643 9.36243,13.17152 15.52572,17.64241c11.38086,8.2557 18.91529,10.1036 26.05408,11.06881c7.20905,0.9747 14.96007,0.42435 22.44953,-1.70159c8.03162,-2.27984 16.21475,-6.2759 23.54823,-12.08158c17.09834,-13.53618 23.73392,-23.93513 30.80877,-34.80731c7.52084,-11.55752 14.14416,-24.16431 19.87517,-37.41757c5.80031,-13.41349 10.78444,-27.07947 13.80019,-40.82432c5.71059,-26.02695 5.3075,-38.40492 4.03279,-49.70872c-1.17759,-10.44257 -3.68852,-19.90433 -7.60026,-27.88042c-3.45342,-7.04158 -7.4689,-13.32456 -13.28744,-16.22292c-9.36286,-4.66389 -16.14997,-1.89976 -20.9758,1.58351c-5.67167,4.0938 -10.3554,10.35414 -14.50675,17.64595c-4.55422,7.99942 -8.31444,17.05606 -10.75837,26.85485c-5.12557,20.55089 -5.01578,31.4551 -4.53257,42.25012c0.48457,10.82572 2.13971,21.60092 4.78892,32.13178c2.62046,10.41657 6.02572,20.55663 10.67005,30.05577c8.87918,18.16072 15.10356,26.03716 21.44301,33.23168c6.0905,6.91199 12.85341,13.03579 20.18754,18.13567c7.0762,4.92052 14.62759,9.12051 22.70803,11.80123c15.64481,5.19024 24.3257,5.44268 32.53794,5.19374c8.11721,-0.24607 16.1082,-1.61842 23.38448,-4.15554c7.18073,-2.50379 13.99585,-5.9818 18.92515,-10.86259c10.04497,-9.94612 11.69344,-17.27531 12.85087,-24.29998c1.18311,-7.18057 0.87162,-14.54884 -0.62903,-21.5921c-1.44182,-6.76723 -3.52846,-13.21372 -7.60885,-18.02566c-6.75415,-7.9651 -12.82111,-9.14073 -17.75681,-8.63678c-5.18939,0.52985 -10.3139,3.076 -14.57789,6.60239c-4.52446,3.74178 -8.39916,8.56803 -10.11855,14.10788c-3.57277,11.51131 -1.15501,18.14845 1.7502,24.18799c2.97499,6.18457 7.51729,11.91958 13.09574,16.70909c5.42251,4.65562 11.59259,8.75519 18.45987,10.16172c12.69186,2.59953 19.68755,-0.70867 25.21919,-4.41933c5.96133,-3.99894 10.84729,-9.59981 14.84498,-15.79706c4.06759,-6.30565 7.27913,-13.02214 8.5761,-19.78938c2.32883,-12.15094 0.32933,-17.61021 -2.05082,-22.01775c-2.21066,-4.09368 -5.41839,-7.40476 -8.41025,-10.33917c-2.66692,-2.6157 -5.79273,-4.58297 -6.34212,-6.87916c-0.85168,-3.5595 2.99208,-5.45013 6.94726,-6.98859c4.89398,-1.90365 10.89958,-3.46039 17.46671,-5.28049l6.99801,-1.91472l7.19331,-2.03537l7.15307,-2.18206"
+            stroke-width="3"
+            fill="none"
+            id="handpath"
+          />
+        </svg>
+
+        <svg id="hello2" viewBox="0 0 2285 1200">
+          <path
+            stroke="#000000"
+            d="m7.00012,277.22128c23.9362,-5.32306 25.56741,-5.71264 27.02303,-6.09116c1.32363,-0.34419 2.53911,-0.68387 3.67516,-1.03091c1.10051,-0.33619 2.18564,-0.69599 3.2874,-1.08412c2.40549,-0.84742 3.74526,-1.35586 5.18362,-1.89422c1.51305,-0.56633 3.07551,-1.16029 4.66398,-1.77791c1.59987,-0.62205 3.18666,-1.24705 4.72859,-1.88436c2.91171,-1.20348 4.22524,-1.79268 5.45746,-2.37054c1.1876,-0.55694 2.33361,-1.13134 3.45759,-1.73354c1.14543,-0.61371 2.31235,-1.27744 3.52221,-1.99971c2.68768,-1.60445 4.16417,-2.54582 5.74277,-3.54396c1.65391,-1.04576 3.35073,-2.13508 5.06682,-3.25417c1.72308,-1.12367 3.42377,-2.24462 5.06682,-3.36063c3.08588,-2.09602 4.46174,-3.08117 5.74086,-4.02345c1.22047,-0.89909 2.37952,-1.7921 3.49421,-2.69523c1.11817,-0.90595 2.23385,-1.85246 3.36496,-2.85493c2.4608,-2.18094 3.77672,-3.42115 5.17214,-4.73004c1.45371,-1.36356 2.93351,-2.7751 4.4184,-4.21942c1.48896,-1.44827 2.95347,-2.89125 4.35375,-4.32587c2.64167,-2.70646 3.85634,-3.97841 4.9098,-5.37038c1.16187,-1.5352 2.27435,-3.467 3.36278,-5.90327c1.34867,-3.01877 2.71728,-6.84922 4.20296,-11.59895c3.98283,-12.73305 6.12839,-21.0114 8.51172,-30.31386c2.5689,-10.02679 5.0675,-20.51175 7.18231,-31.18072c2.08071,-10.49696 4.00216,-20.57016 4.46792,-29.95641c0.76176,-15.35094 -0.61445,-21.18109 -3.45445,-24.75894c-2.19758,-2.76853 -6.16167,-3.93049 -9.75018,-3.00043c-4.36337,1.13088 -8.78363,4.45881 -12.72307,8.97646c-9.81849,11.25956 -12.92513,19.36656 -16.50831,27.87707c-3.84014,9.12081 -7.0883,18.94976 -10.05393,29.21651c-3.03381,10.5027 -5.66637,21.18704 -7.92121,31.87804c-4.36006,20.67266 -5.81786,30.46866 -7.20959,39.76919c-1.31832,8.80994 -2.37686,17.14287 -3.27016,24.98112c-0.83537,7.33 -1.49658,14.15414 -2.10687,20.45653c-1.0665,11.01349 -1.54012,15.71642 -2.03744,19.90273c-0.44034,3.70668 -0.87657,6.9602 -1.30117,9.79089c-0.36649,2.44331 -0.71575,4.52579 -1.04267,6.27765c-0.49376,2.6459 -0.7328,3.58073 -0.82723,4.25373c-0.05096,0.36325 0.05956,0.39639 0.2542,0.04081c0.40718,-0.74381 0.92141,-1.95602 1.67601,-3.63212c2.21461,-4.91898 3.67179,-8.22682 5.51681,-12.00093c2.06328,-4.22057 4.45871,-8.78194 7.37834,-13.52059c3.07873,-4.99687 6.5155,-10.13351 10.80359,-15.01103c8.85226,-10.06909 14.61214,-14.43449 20.54685,-18.47693c5.83982,-3.9778 11.97934,-7.37718 18.25734,-9.90977c5.87559,-2.37024 11.70923,-4.29544 17.15869,-4.21409c9.35086,0.13958 13.17903,3.29562 15.73279,6.54856c2.79738,3.56327 4.39788,8.13069 5.58599,13.04326c1.25536,5.19061 1.85749,10.65801 2.28997,16.18388c0.84085,10.74375 0.87913,15.73718 1.33852,20.35539c0.4215,4.23728 0.95617,8.0928 2.20596,11.36827c1.10588,2.89834 2.66649,5.58438 5.30809,6.84369c5.59525,2.6674 10.30746,1.56462 14.84428,0.47474c5.11825,-1.22956 10.44606,-3.35132 15.75194,-6.11088c5.57843,-2.9013 11.07571,-6.34458 15.75194,-10.58225c9.40082,-8.51913 12.34619,-13.91508 14.77343,-19.15042c2.34728,-5.06286 3.7737,-10.12679 4.2719,-14.87263c0.44799,-4.26761 0.6266,-8.26862 -1.22148,-10.93356c-2.60806,-3.76088 -6.43999,-3.28433 -9.27001,-1.87215c-3.50963,1.75132 -6.80821,4.78361 -9.94405,8.39448c-3.37337,3.88436 -6.4548,8.25064 -8.39298,13.02552c-3.7581,9.25841 -3.544,14.12281 -2.39363,18.38388c1.10286,4.08511 3.59002,7.86568 7.31585,10.53434c3.85325,2.75992 9.24571,4.67742 15.32972,4.83866c14.77647,0.39161 23.57858,-3.07675 32.75237,-6.73465c10.08047,-4.01944 20.29006,-9.52858 30.12947,-16.38971c10.37464,-7.23434 20.47931,-15.69051 28.70768,-25.81153c17.34386,-21.33327 22.16754,-34.69733 26.49069,-48.07315c4.35989,-13.48939 6.94024,-27.24672 8.11292,-40.709c1.1199,-12.85652 1.31341,-24.9967 -0.8057,-35.75855c-3.3961,-17.24692 -7.68559,-23.36081 -12.67468,-26.17842c-4.195,-2.36913 -10.0916,-1.9515 -14.91396,0.67248c-5.84107,3.17828 -11.13108,8.98383 -15.36632,16.37551c-10.38188,18.11935 -12.38488,30.17554 -14.76578,42.87154c-2.53258,13.50503 -3.93413,27.75309 -4.54545,42.38399c-0.61728,14.77375 -0.52651,29.49348 0.75398,43.82122c2.39037,26.74669 5.26946,38.64268 8.5768,49.38223c3.03604,9.85863 6.82941,18.71683 11.58348,26.31899c4.36904,6.98643 9.36243,13.17152 15.52572,17.64241c11.38086,8.2557 18.91529,10.1036 26.05408,11.06881c7.20905,0.9747 14.96007,0.42435 22.44953,-1.70159c8.03162,-2.27984 16.21475,-6.2759 23.54823,-12.08158c17.09834,-13.53618 23.73392,-23.93513 30.80877,-34.80731c7.52084,-11.55752 14.14416,-24.16431 19.87517,-37.41757c5.80031,-13.41349 10.78444,-27.07947 13.80019,-40.82432c5.71059,-26.02695 5.3075,-38.40492 4.03279,-49.70872c-1.17759,-10.44257 -3.68852,-19.90433 -7.60026,-27.88042c-3.45342,-7.04158 -7.4689,-13.32456 -13.28744,-16.22292c-9.36286,-4.66389 -16.14997,-1.89976 -20.9758,1.58351c-5.67167,4.0938 -10.3554,10.35414 -14.50675,17.64595c-4.55422,7.99942 -8.31444,17.05606 -10.75837,26.85485c-5.12557,20.55089 -5.01578,31.4551 -4.53257,42.25012c0.48457,10.82572 2.13971,21.60092 4.78892,32.13178c2.62046,10.41657 6.02572,20.55663 10.67005,30.05577c8.87918,18.16072 15.10356,26.03716 21.44301,33.23168c6.0905,6.91199 12.85341,13.03579 20.18754,18.13567c7.0762,4.92052 14.62759,9.12051 22.70803,11.80123c15.64481,5.19024 24.3257,5.44268 32.53794,5.19374c8.11721,-0.24607 16.1082,-1.61842 23.38448,-4.15554c7.18073,-2.50379 13.99585,-5.9818 18.92515,-10.86259c10.04497,-9.94612 11.69344,-17.27531 12.85087,-24.29998c1.18311,-7.18057 0.87162,-14.54884 -0.62903,-21.5921c-1.44182,-6.76723 -3.52846,-13.21372 -7.60885,-18.02566c-6.75415,-7.9651 -12.82111,-9.14073 -17.75681,-8.63678c-5.18939,0.52985 -10.3139,3.076 -14.57789,6.60239c-4.52446,3.74178 -8.39916,8.56803 -10.11855,14.10788c-3.57277,11.51131 -1.15501,18.14845 1.7502,24.18799c2.97499,6.18457 7.51729,11.91958 13.09574,16.70909c5.42251,4.65562 11.59259,8.75519 18.45987,10.16172c12.69186,2.59953 19.68755,-0.70867 25.21919,-4.41933c5.96133,-3.99894 10.84729,-9.59981 14.84498,-15.79706c4.06759,-6.30565 7.27913,-13.02214 8.5761,-19.78938c2.32883,-12.15094 0.32933,-17.61021 -2.05082,-22.01775c-2.21066,-4.09368 -5.41839,-7.40476 -8.41025,-10.33917c-2.66692,-2.6157 -5.79273,-4.58297 -6.34212,-6.87916c-0.85168,-3.5595 2.99208,-5.45013 6.94726,-6.98859c4.89398,-1.90365 10.89958,-3.46039 17.46671,-5.28049l6.99801,-1.91472l7.19331,-2.03537l7.15307,-2.18206"
+            stroke-width="3"
+            fill="black"
+            id="handpath2"
+          />
+        </svg>
+
+        <img id="hand" class="hand" src="/medias/Group3.svg" width="300px" />
+      </div>
+    </div>
+
+    <div id="mychiro"></div>
+
+    <a href="/index.html"
+      ><svg
+        id="gauthier"
+        width="200"
+        viewBox="-10 -10 1000 486"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M177.5 23.1C143.8 3.40001 100.8 -5.89999 62.4 4.00001C44.9 8.50001 29.1 17.8 18 32.2C8 45.1 2.1 60.8 0.5 77C-3.2 112.3 15.3 146.4 42.4 168.1C72.4 192.2 113.6 202.9 151.7 201.2C169.8 200.4 188.3 195 199.7 180C209.1 167.7 211.4 150.5 200.8 138.2C191.6 127.5 175.5 123.8 164.3 133.8C149.4 147.1 154 169 157.9 186C163 208.4 168.2 230.8 173.3 253.3C178.4 275.6 184.4 298 188.2 320.6C191.6 341.1 191.5 363.2 179.7 381.1C169.6 396.4 152.2 403.6 134.4 399.1C117.5 394.8 103.7 382 98 365.5C91.6 346.8 94.7 325.6 103.3 308.2C121.8 270.8 161.1 250.7 195.4 230.3C204.6 224.8 213.8 219.1 222.6 212.9C225.2 211.1 222.7 206.7 220.1 208.6C188 231.3 150.6 246.6 122.2 274.5C97.7 298.7 80.7 335.7 94.3 369.8C104.8 396.2 137.6 414.3 164.7 401.1C178.9 394.2 188.2 379.9 192.4 365C197.8 345.9 194.7 325.7 190.6 306.6C181.3 263.3 170.2 220.4 161 177.1C158.9 167 157.3 156.1 161.5 146.3C165 138.1 172.5 131.6 181.9 132.8C189.6 133.8 196.6 139.1 200.2 145.9C204.6 154.1 203.3 163.9 199 171.8C189 190.2 167.8 195.8 148.2 196.2C128.8 196.6 109 193.6 90.5 187.8C55.2 176.6 23.2 151.7 10.4 116C-1.1 84.1 6.4 45.1 33.6 23.3C64.6 -1.49999 112.4 2.00001 147.6 14.6C157.1 18 166.3 22.4 175 27.5C177.8 29.1 180.3 24.7 177.5 23.1Z"
+          stroke="#585050"
+          stroke-width="10"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M267.3 228.3C267.2 228.3 266.9 228.3 267.3 228.3C267.6 228.4 267.7 228.4 267.5 228.4C267.7 228.5 267.8 228.5 268 228.6C267.7 228.4 268.5 229 268.3 228.8C268.3 228.8 268.7 229.4 268.6 229.1C268.4 228.8 268.9 229.8 268.7 229.4C268.7 229.3 268.7 229.3 268.7 229.2C269 229.7 268.7 229.8 268.8 229.5C268.8 229.4 268.8 229.3 268.8 229.3C268.8 229.2 268.7 229.9 268.8 229.6L268.9 229.4C268.9 229.3 268.6 230 268.8 229.7C268.9 229.6 269 229.4 268.7 229.7C268.4 230.1 268.6 229.9 268.7 229.8C268.6 229.9 268.4 230 268.3 230.1C268.4 230 268.4 230 268.1 230.2C267.8 230.3 267.8 230.3 267.9 230.3C267.7 230.3 267.6 230.3 267.4 230.4C267.3 230.4 266.7 230.2 267.1 230.4C266.5 229.6 265.9 228.8 265.3 228C265.4 228.9 265.5 229.8 265.6 230.8C265.7 232.1 266.7 233.4 268.1 233.3C269.3 233.2 270.7 232.2 270.6 230.8C270.5 229.9 270.4 229 270.3 228C270.2 226.9 269.6 225.9 268.5 225.6C266 224.8 264.1 227 263.9 229.3C263.7 231.4 265.3 233.6 267.5 233.4C268.8 233.3 270.1 232.3 270 230.9C269.8 229.6 268.7 228.2 267.3 228.3Z"
+          stroke="#585050"
+          stroke-width="5"
+          stroke-miterlimit="5"
+        /></svg
+    ></a>
+
+    <svg
+      id="paperplanedraw"
+      width="91"
+      viewBox="0 0 91 66"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.01633 56.7C0.716331 51 4.61633 46.1 7.21633 41C13.5163 28.6 11.6163 12.6 2.51633 2C29.8163 11 56.5163 21.6 82.6163 33.8C82.8452 33.907 89.1 35.3 89.5 36C90.4 37.8 83.0163 38.6 81.1163 39.2C68.4163 43.7 55.8163 48.2 43.1163 52.7C35.6163 55.3 27.8163 58.2 22.5163 64.1C18.9163 54.5 15.4163 44.8 12.0163 35.2C35.2163 37.7 58.7163 37.9 81.9163 35.6C58.0163 32.4 34.0163 29.2 10.1163 26C11.3163 26 12.5163 27.2 12.3163 28.4C8.91633 38 5.41633 47.4 1.91633 56.9C5.01633 49.3 9.31633 42.1 14.5163 35.7C17.1163 42.5 18.5163 49.7 18.7163 57C12.8163 56.9 7.01633 56.8 1.11633 56.7"
+        stroke="black"
+        stroke-miterlimit="10"
+      />
+    </svg>
+
+    <svg
+      id="tracé2"
+      width="1735"
+      viewBox="0 0 2285 1200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="flypath2"
+        d="M1 6.44574C581.517 -55.165 1088.4 425.013 1668.81 488.099C2009.88 525.201 2366.69 416.39 2692.02 526.109C2901 596.57 3074.68 751.448 3284.9 818.391C3581.34 912.907 4023.5 861.359 4320.5 769C4803.89 618.774 5270 616.5 5769 526.109"
+        stroke="black"
+        stroke-miterlimit="10"
+      />
+    </svg>
+
+    <svg
+      id="tracé3"
+      width="3035"
+      viewBox="0 0 2285 1200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="flypath3"
+        d="M4362.08 460.023C4103.59 583.406 3770.47 500.939 3468.12 520.816C3038.17 549.045 2645.88 790.471 2217.9 747.863C2056.72 731.846 1906.57 675.969 1747.63 649.644C1376.38 588.217 997.295 691.511 634.28 777.625C482.837 813.519 311.374 845.29 172.732 785.978C38.1082 728.41 -22.4964 593.661 9.30404 476.992C41.1044 360.323 150.942 263.055 281.889 200.624C412.835 138.192 564.006 106.527 714.496 82.4215C1280.09 -8.18599 1862.85 -2.95254 2440.3 2.65096C3085.43 8.94168 3760.66 21.1002 4325.44 263.214C4377.26 285.416 4431.67 313.169 4449.24 356.993C4466.81 400.817 4420.3 459.389 4362.82 448.446"
+        stroke="black"
+        stroke-miterlimit="10"
+      />
+    </svg>
+
+    <svg
+      id="tracé4"
+      width="2735"
+      viewBox="0 0 2285 1200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="flypath4"
+        d="M61.787 412.87C204.752 421.972 347.779 431.073 490.744 440.141C701.867 453.553 918.715 467.924 1106.44 523.287C1266.52 570.471 1399.39 645.884 1570.49 679.074C1760.81 715.994 1970.64 695.395 2165.81 667.406C2360.99 639.417 2558.32 604.037 2759.34 612.523C3014.49 623.335 3257.08 704.463 3510.93 686.362C3686.59 673.839 3848.02 610.573 3928.19 522.773C4008.35 435.008 4004.9 325.242 3919.38 239.051C3832.2 151.217 3670.27 92.2619 3498.8 60.9539C3327.33 29.6458 3144.83 23.0763 2964.62 17.7727C2193.27 -4.9812 1418.79 -7.92381 649.348 30.0222C530.333 35.9075 409.841 42.956 298.092 66.5312C186.343 90.1063 82.7207 132.364 31.4331 192.379C-19.8545 252.395 -7.78686 331.161 78.8418 376.909"
+        stroke="black"
+        stroke-miterlimit="10"
+      />
+    </svg>
+
+    <img id="paperplane2bis" src="/medias/paperplane2bis.svg" />
+
+    <img id="paperplane3" src="/medias/paperplane3.svg" />
+
+    <img id="paperplane5" src="/medias/paperplane5.svg" />
+
+    <p4 id="ABOUT">ABOUT</p4>
+
+    <p4 id="RETURN">CLOSE</p4>
+
+    <div class="gallery">
+      <ul class="cards">
+        <li class="mychirocard">
+          <a
+            ><img
+              class="mychirolink"
+              id="mychiro"
+              src="/medias/logomychiro.svg"
+              alt="image"
+            />
+          </a>
+        </li>
+        <li class="leilarossardcard">
+          <a><img id="mychiro" class="leilalink" src="/medias/leilalogo.svg" alt="image" /> </a>
+        </li>
+        <li class="newproject">New project coming soon</li>
+        <li class="newproject">New project coming soon</li>
+        <li class="newproject">New project coming soon</li>
+        <li class="koozykoozcard">
+          <a><img id="mychiro" class="koozylink" src="/medias/koozylogo.svg" alt="image" /> </a>
+        </li>
+      </ul>
+      <div class="actions">
+        <button class="prev"></button>
+        <button class="next"></button>
+      </div>
+    </div>
+    <div class="drag-proxy"></div>
+
+    <div id="global">
+      <div id="controls">
+        <p id="c-title">Controls</p>
+        <div class="c-panel">
+          <p class="cp-title">Gravity</p>
+          <input
+            id="ci-g"
+            class="c-input"
+            type="range"
+            min="0"
+            max="15"
+            step="0.1"
+            value="0.8"
+            oninput="gravChange(this.value)"
+          /><span id="cd-g" class="c-display"></span>
+        </div>
+        <div class="c-panel">
+          <p class="cp-title">Air Friction</p>
+          <input
+            id="ci-fr"
+            class="c-input"
+            type="range"
+            min="0"
+            max="100"
+            step="0.1"
+            value="1"
+            oninput="frChange(this.value)"
+          /><span id="cd-fr" class="c-display"></span>
+        </div>
+        <div class="c-panel">
+          <p class="cp-title">Ground Friction</p>
+          <input
+            id="ci-frg"
+            class="c-input"
+            type="range"
+            min="0"
+            max="100"
+            step="0.1"
+            value="20"
+            oninput="frGrChange(this.value)"
+          /><span id="cd-frg" class="c-display"></span>
+        </div>
+        <div class="c-panel">
+          <p class="cp-title">Bounce Factor</p>
+          <input
+            id="ci-frb"
+            class="c-input"
+            type="range"
+            min="0"
+            max="100"
+            step="0.1"
+            value="5"
+            oninput="frBoChange(this.value)"
+          /><span id="cd-frb" class="c-display"></span>
+        </div>
+        <div class="c-panel">
+          <p class="cp-title">Terminal Velocity</p>
+          <input
+            id="ci-tv"
+            class="c-input"
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+            oninput="tVelChange(this.value)"
+          /><span id="cd-tv" class="c-display"></span>
+        </div>
+        <div class="c-panel">
+          <p class="cp-title">Ball Name</p>
+          <input
+            id="ci-name"
+            class="c-input"
+            type="text"
+            value=""
+            oninput="nameChange(this.value)"
+          /><span id="cd-name" class="c-display"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="playground">
+      <img id="ball" width="100px" src="/medias/paperplane2.svg" />
+    </div>
+
+    <div id="msg">
+      <p id="msg-text"></p>
+    </div>
+
+    <div id="unlockplane">
+      <p2 id="reveal" data-animate="slideup">ON</p2>
+    </div>
+    <div id="lockplane">
+      <p2 id="reveal" data-animate="slideup">OFF</p2>
+    </div>
+
+    <div class="presentation">
+      <p class="p-presentation" id="reveal" data-animate="slideup">GAUTHIER</p>
+      <p class="p-presentation" id="reveal" data-animate="slideup">BOURSON</p>
+      <p class="p-presentation" id="reveal" data-animate="slideup">FRONT-END DEVELOPER</p>
+      <p class="p-presentation" id="reveal" data-animate="slideup">AVAILABLE APRIL22</p>
+    </div>
+
+    <div class="paperplane">
+      <p id="reveal" data-animate="slideup">PAPER PLANE</p>
+    </div>
+
+    <div class="game">
+      <p6 class="pgame" id="reveal" data-animate="slideup">START</p6>
+      <p6 class="pgame" id="reveal" data-animate="slideup">GAME</p6>
+    </div>
+
+    <div class="contact">
+      <img id="arrow1" width="10px" src="/medias/arrow1.svg" /><p1
+        class="email"
+        id="reveal"
+        data-animate="slideup"
+        >E-mail</p1
+      >
+      <img id="arrow2" width="10px" src="/medias/arrow2.svg" /><p1
+        class="github"
+        id="reveal"
+        data-animate="slideup"
+        >Github</p1
+      >
+      <img id="arrow3" width="10px" src="/medias/arrow3.svg" /><p1
+        class="twitter"
+        id="reveal"
+        data-animate="slideup"
+        >Twitter</p1
+      >
+    </div>
+
+    <div class="aboutcontainer">
+      <h1 class="abouttitle">
+        <span>Hi</span>
+        <span>there!</span>
+      </h1>
+      <p id="reveal" data-animate="slideup" class="textabout">
+        
+I'm Gauthier a young passionate developer, I particularly like to work on the user experience through design and animations. Every day is another day to learn new things, our field is so vast that we never stop learning, it's so satisfying!
+
+
+      </p>
+      <p id="reveal" data-animate="slideup" class="textabout">
+        As any good self-respecting Front-end developer, I mainly work on JavaScript and its frameworks like React and Vue.
+        Always in a benevolent state of mind, I am committed to working in a good mood and mutual aid. I think that everyone has their skills, particularities, strengths within a team and that you have to know how to listen to your peers in order to develop your own stack.
+      </p>
+      <p id="reveal" data-animate="slideup" class="textabout">
+        Write me for a future collaboration :)
+      </p>
+    </div>
+
+    <canvas id="stage" width="1400" height="850"></canvas>
+
+    <div class="projectscontainer">
+      <div class="leftcolumn">
+        <h1 class="home-title">
+          <span>Project 1</span>
+          <span>My chiro</span>
+        </h1>
+        <div class="textcolumn">
+          <p id="reveal" data-animate="slideup">
+            This is my first project, a website for a chiropractor's office. We tried to make a modern site respecting the codes of medical sites, with the support of chiropractors I realized the design and the entire site.
+          </p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup">Client | Chiropractor office</p>
+          <p id="reveal" data-animate="slideup">Start | January 2023</p>
+          <p id="reveal" data-animate="slideup">Mission | Dev and design</p>
+          <p id="reveal" data-animate="slideup">Technos | HTML, CSS, Javascript</p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" class="nextproject" data-animate="slideup"></p>
+          <a href="/index.html"
+            ><p id="reveal" class="home" data-animate="slideup">Home</p></a>
+        </div>
+      </div>
+
+      <div class="slider" id="slider">
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 1"
+          ><img src="/medias/mychiro1.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 2"
+          ><img src="/medias/mychiro2.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 3"
+          ><img src="/medias/mychiro3.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 4"
+          ><img src="/medias/mychiro4.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 5"
+          ><img src="/medias/mychiro5.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 6"
+          ><img src="/medias/mychiro7.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 7"
+          ><img src="/medias/mychiro1.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 8"
+          ><img src="/medias/mychiro2.jpg" alt="image"
+        /></span>
+      </div>
+    </div>
+
+
+    <div class="projectscontainer2">
+      <div class="leftcolumn">
+        <h1 class="home-title">
+          <span>Project 2</span>
+          <span>Leila Rossard</span>
+        </h1>
+        <div class="textcolumn">
+          <p id="reveal" data-animate="slideup">
+            This is my first project, a website for a chiropractor's office. We tried to make a modern site respecting the codes of medical sites, with the support of chiropractors I realized the design and the entire site.
+          </p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup">Client | Leila Rossard</p>
+          <p id="reveal" data-animate="slideup">Start | MAY 2022</p>
+          <p id="reveal" data-animate="slideup">Mission | Dev and design</p>
+          <p id="reveal" data-animate="slideup">Technos | HTML, CSS, Javascript</p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" class="nextproject" data-animate="slideup"></p>
+          <a href="/index.html"
+            ><p id="reveal" class="home" data-animate="slideup">Home</p></a>
+        </div>
+      </div>
+
+      <div class="slider" id="slider">
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 1"
+          ><img src="/medias/capture-leilarossard.com/cap8.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 2"
+          ><img src="/medias/capture-leilarossard.com/cap7.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 3"
+          ><img src="/medias/capture-leilarossard.com/cap6.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 4"
+          ><img src="/medias/capture-leilarossard.com/cap5.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 5"
+          ><img src="/medias/capture-leilarossard.com/cap4.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 6"
+          ><img src="/medias/capture-leilarossard.com/cap3.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 7"
+          ><img src="/medias/capture-leilarossard.com/cap2.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 8"
+          ><img src="/medias/capture-leilarossard.com/cap1.jpg" alt="image"
+        /></span>
+      </div>
+    </div>
+
+
+    <div class="projectscontainer3">
+      <div class="leftcolumn">
+        <h1 class="home-title">
+          <span>Project 3</span>
+          <span>Koozy kooz</span>
+        </h1>
+        <div class="textcolumn">
+          <p id="reveal" data-animate="slideup">
+            This is my first project, a website for a chiropractor's office. We tried to make a modern site respecting the codes of medical sites, with the support of chiropractors I realized the design and the entire site.
+          </p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup">Client | Koozy Kooz Fingerboard</p>
+          <p id="reveal" data-animate="slideup">Start | MAY 2022</p>
+          <p id="reveal" data-animate="slideup">Mission | Dev and design</p>
+          <p id="reveal" data-animate="slideup">Technos | HTML, CSS, Javascript</p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" data-animate="slideup"></p>
+          <p id="reveal" class="nextproject" data-animate="slideup"></p>
+          <a href="/index.html"
+            ><p id="reveal" class="home" data-animate="slideup">Home</p></a>
+        </div>
+      </div>
+
+      <div class="slider" id="slider">
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 1"
+          ><img src="/medias/captures-koozykooz/cap1.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 2"
+          ><img src="/medias/captures-koozykooz/cap2.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 3"
+          ><img src="/medias/captures-koozykooz/cap3.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 4"
+          ><img src="/medias/captures-koozykooz/cap1.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 5"
+          ><img src="/medias/captures-koozykooz/cap2.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 6"
+          ><img src="/medias/captures-koozykooz/cap3.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 7"
+          ><img src="/medias/captures-koozykooz/cap1.jpg" alt="image"
+        /></span>
+        <span
+          onmouseenter="javascript:carousselpause();"
+          onmouseleave="javascript:carousselplay();"
+          style="--i: 8"
+          ><img src="/medias/captures-koozykooz/cap2.jpg" alt="image"
+        /></span>
+      </div>
+    </div>
+  </body>
+</html>
